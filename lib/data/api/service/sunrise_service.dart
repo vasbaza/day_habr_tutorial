@@ -1,6 +1,6 @@
 import 'package:day_habr_tutorial/data/api/api_day.dart';
+import 'package:day_habr_tutorial/data/api/request/get_day_body.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 
 class SunRiseService {
   static const _BASE_URL = 'https://api.sunrise-sunset.org';
@@ -9,12 +9,10 @@ class SunRiseService {
     BaseOptions(baseUrl: _BASE_URL),
   );
 
-  Future<ApiDay> getDay(
-      {@required double latitude, @required double longitude}) async {
-    final query = {'lat': latitude, 'lng': longitude, 'formatted': 0};
+  Future<ApiDay> getDay(GetDayBody body) async {
     final response = await _dio.get(
       '/json',
-      queryParameters: query,
+      queryParameters: body.toApi(),
     );
     return ApiDay.fromApi(response.data);
   }
