@@ -14,6 +14,7 @@ class SunRiseService {
       '/json',
       queryParameters: body.toApi(),
     );
+    // print(response.data)
     return ApiDay.fromApi(response.data);
   }
 }
