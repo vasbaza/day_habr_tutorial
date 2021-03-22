@@ -1,4 +1,4 @@
-# day_habr_tutorial
+# day_tutorial
 
 A new Flutter project.
 
